@@ -2,9 +2,6 @@
 package kata1.pkg2021;
 
 import java.time.LocalDate;
-import java.time.Period;
-
-
 
 public class Kata12021 {
     public static void main(String[] args) {
