@@ -1,11 +1,13 @@
 package kata1.pkg2021;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Person {
         private final String name;
-        private final Date birth;
-    public Person(String name, Date birth) {
+        private final LocalDate birth;
+        private final long MILISECONDS_PER_YEAR = (long) (1000*60*60*24*365.25);
+    public Person(String name, LocalDate birth) {
         this.birth=birth; 
         this.name=name;
     }
@@ -14,12 +16,17 @@ public class Person {
         return name;
     }
 
-    public Date getBirth() {
+    public LocalDate getBirth() {
         return birth;
     }
     
-    public int getAge(){
-        return (int) ((new Date().getTime()-birth.getTime())/3153600000L);
+    public Period getAge(){
+        LocalDate today=LocalDate.now();
+        return  Period.between(birth, today);
+    }
+    
+    private long milliSecondsToYear(long milles){
+        return milles/MILISECONDS_PER_YEAR;
     }
     
 }
